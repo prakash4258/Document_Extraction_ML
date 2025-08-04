@@ -88,5 +88,5 @@ Edit
 
 Need help making this live on GitHub or setting up the `.gitignore` too?
 4. Access the App
-Open your browser and go to:
-http://localhost:3007
+Use the below link to view the Project
+https://35p92cmg-3001.inc1.devtunnels.ms/
