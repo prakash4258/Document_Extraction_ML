@@ -61,7 +61,7 @@ npm start
 
 📄 Support scanned multi-page PDFs
 
-💾 Database integration (MongoDB/PostgreSQL)
+💾 Database integration 
 
 🧑‍💼 User authentication
 
