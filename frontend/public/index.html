@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document Uploader</title>
+</head>
+<body>
+  <h2>Upload a Document</h2>
+  <input type="file" id="fileInput" />
+  <button onclick="uploadFile()">Upload</button>
+
+  <h3>Extracted Text:</h3>
+  <pre id="output"></pre>
+
+  <script>
+    async function uploadFile() {
+      const fileInput = document.getElementById("fileInput");
+      const file = fileInput.files[0];
+      if (!file) {
+        alert("Please select a file.");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("file", file);
+
+      try {
+        const response = await fetch("http://localhost:8000/upload/", {
+          method: "POST",
+          body: formData
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        document.getElementById("output").textContent = data.text || "No text found.";
+      } catch (error) {
+        document.getElementById("output").textContent = "Upload failed: " + error.message;
+      }
+    }
+  </script>
+</body>
+</html>
